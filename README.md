@@ -1,4 +1,4 @@
-# vue-x-tree
+# vue-y-tree
 
 > Yet another tree component for vue
 
@@ -15,4 +15,3 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
