@@ -4,11 +4,11 @@
 
 # Demo
 
-- [simple demo](http://jsfiddle.net/kdepp/gdmzcf4t/)
-  - ![](https://cloud.githubusercontent.com/assets/461599/17044723/3c4fec00-4ff5-11e6-81ae-6fa65d5189b4.png)
+- #### [simple demo](http://jsfiddle.net/kdepp/gdmzcf4t/)
+  ![](https://cloud.githubusercontent.com/assets/461599/17044723/3c4fec00-4ff5-11e6-81ae-6fa65d5189b4.png)
 
-- [dom tree demo](http://jsfiddle.net/kdepp/gdmzcf4t/)
-  - ![](https://cloud.githubusercontent.com/assets/461599/17045844/e037c1bc-4fff-11e6-83d0-503c05732841.png)
+- #### [dom tree demo](http://jsfiddle.net/kdepp/4upxrghc/)
+  ![](https://cloud.githubusercontent.com/assets/461599/17045844/e037c1bc-4fff-11e6-83d0-503c05732841.png)
 
 ## Install
 
@@ -23,7 +23,57 @@ npm install vue-y-tree
 
 # Usage
 
-TODO
+``` html
+<body style="background: #fff">
+  <div>selected: {{ text }}</div>
+  <hr/>
+  <tree :tree="tree" :display-args="args" @tree-select="onSelect"></tree>
+</body>
+
+```
+
+``` javascript
+// directly used in browser
+// var yTree = VueTree.yTree;
+
+var yTree = require('vue-y-tree').yTree;
+
+new Vue({
+    el: 'body',
+		components: {
+    	tree: yTree
+    },
+    methods: {
+    	onSelect: function (data) {
+      	this.text = data;
+      }
+    },
+    data: function () {
+    	return {
+      	text: 'none',
+      	tree: {
+        	value: 'level 1',
+          children: [
+          	{
+            	value: 'level 2 A'
+            },
+            {
+            	value: 'level 2 B',
+              children: [
+              	{ value: 'level 3 A'},
+                { value: 'level 3 B'},
+                { value: 'level 3 C'}
+              ]
+            }
+          ]
+        },
+        args: {
+        	valueToString: x => x
+        }
+      }
+    }
+})
+```
 
 # Tips
 
@@ -34,7 +84,7 @@ Two vue components are exported in `vue-y-tree`:
 - yTree
   - wrap `xTree` with a little more fancy display
 
-`xTree` is implemented with flexibility. It is all about how to interact with a tree, but it doesn't care how to display your tree node. You can pass in your own component to display whatever exists in your tree data ([checkout the dom tree demo](link)).
+`xTree` is implemented with flexibility. It is all about how to interact with a tree, but it doesn't care how to display your tree node. You can pass in your own component to display whatever exists in your tree data ([checkout the dom tree demo](http://jsfiddle.net/kdepp/4upxrghc/)).
 
 Use `yTree` if you just want to display normal text in each tree node, while it is recommended to use `xTree` if you have a complex data structure and want to customize the display.
 
@@ -43,34 +93,34 @@ Use `yTree` if you just want to display normal text in each tree node, while it 
 
 ### xTree
 
-| Name | type | required | default | Description |
-| -- | -- | -- | -- | -- |
-| tree | Object | true |  | tree data to be rendered |
-| childrenName | String | false | 'children' | the children key in the tree data
-| valueName | String | false | 'value' | the children key in the tree data
-| idName | String | false |   | the key to determine whether one node is selected, could be omitted. If omitted, all nodes will be assigned a unique id. |
-| isFold | Boolean | false | false | whether a tree is folded in the first place |
-| isSelected | Boolean | false | false | where a tree is selected in the first place |
-| displayComponent | Object | false |   | the Component to display tree value |
-| displayArgs | Object | false |   | extra args to be passed to displayComponent |
-| extraClass | String | false |   | extra class to be added on the root element, use it for your own css |
-| treeStyle | Object | false | {} | customized inline style for the tree |
+Name | type | required | default | Description
+----- | ----- | ----- | ----- | -----
+tree | Object | true |  | tree data to be rendered
+childrenName | String | false | 'children' | the children key in the tree data
+valueName | String | false | 'value' | the children key in the tree data
+idName | String | false |   | the key to determine whether one node is selected, could be omitted. If omitted, all nodes will be assigned a unique id.
+isFold | Boolean | false | false | whether a tree is folded in the first place
+isSelected | Boolean | false | false | where a tree is selected in the first place
+displayComponent | Object | false |   | the Component to display tree value
+displayArgs | Object | false |   | extra args to be passed to displayComponent
+extraClass | String | false |   | extra class to be added on the root element, use it for your own css
+treeStyle | Object | false | {} | customized inline style for the tree
 
 
 #### displayComponent
 
 Your customized `displayComponent` will get the following props:
 
-| Name | type | Description |
-| -- | -- | -- | -- | -- |
-| value | Object, String | the value to be displayed |
-| toggleFold | Function | (no args) the method to fold/unfold the whole tree |
-| select | Function | (no args) the method to select the tree node |
-| isRoot | Boolean | whether the node is a root node or not|
-| isFold | Boolean | whether the node is folded or not |
-| isSelected | Boolean | whether the node is selected or not |
-| hasChildren | Boolean | whether the node has children or not |
-| args | Object | the extra args passed from xTree's displayArgs |
+Name | type | Description
+----- | ----- | ----- | ----- | -----
+value | Object, String | the value to be displayed
+toggleFold | Function | (no args) the method to fold/unfold the whole tree
+select | Function | (no args) the method to select the tree node
+isRoot | Boolean | whether the node is a root node or not
+isFold | Boolean | whether the node is folded or not
+isSelected | Boolean | whether the node is selected or not
+hasChildren | Boolean | whether the node has children or not
+args | Object | the extra args passed from xTree's displayArgs
 
 
 ### yTree
@@ -93,14 +143,14 @@ var displayArgs = {
 
 Your customized `valueToDisplay` will get the following props:
 
-| Name | type | Description |
-| -- | -- | -- | -- | -- |
-| value | Object, String | the value to be displayed |
-| select | Function | (no args) the method to select the tree node |
-| isRoot | Boolean | whether the node is a root node or not|
-| isFold | Boolean | whether the node is folded or not |
-| isSelected | Boolean | whether the node is selected or not |
-| hasChildren | Boolean | whether the node has children or not |
+Name | type | Description
+----- | ----- | ----- | ----- | -----
+value | Object, String | the value to be displayed
+select | Function | (no args) the method to select the tree node
+isRoot | Boolean | whether the node is a root node or not
+isFold | Boolean | whether the node is folded or not
+isSelected | Boolean | whether the node is selected or not
+hasChildren | Boolean | whether the node has children or not
 
 
 ## Install
