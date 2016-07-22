@@ -12,8 +12,10 @@
         :tree="tree"
         :value-name="valueName"
         :children-name="childrenName"
+        :id-name="idName"
         :is-root="isRoot"
         :is-fold="isFold"
+        :selected-id="selectedId"
         :tree-style="treeStyle"
         :display-component="treeDisplay"
         :display-args="displayArgs"
@@ -35,6 +37,11 @@
         },
 
         props: {
+            tree: {
+                type: Object,
+                default: () => ({
+                })
+            },
             childrenName: {
                 type: String,
                 default: 'children'
@@ -43,10 +50,8 @@
                 type: String,
                 default: 'value'
             },
-            tree: {
-                type: Object,
-                default: () => ({
-                })
+            idName: {
+                type: String
             },
             isRoot: {
                 type: Boolean,
@@ -54,7 +59,13 @@
             },
             isFold: {
                 type: Boolean,
-                default: true
+                default: false
+            },
+            selectedId: {
+                type: String
+            },
+            displayArgs: {
+                type: Object
             },
             treeStyle: {
                 type: Object,
@@ -67,9 +78,6 @@
             },
             extraClass: {
                 type: String
-            },
-            displayArgs: {
-                type: Object
             }
         }
     }

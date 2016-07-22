@@ -45,12 +45,14 @@
         <ul :style="treeStyle.ul" v-if="hasChildren" v-show="!isFold">
             <x-tree v-for="child in tree[childrenName]"
                     :tree="child"
-                    :children-name="childrenName"
                     :value-name="valueName"
+                    :children-name="childrenName"
+                    :id-name="idName"
+                    :is-root=false
+                    :selected-id="selectedId"
                     :display-component="displayComponent"
                     :display-args="displayArgs"
                     :tree-style="treeStyle"
-                    :is-root=false
             ></x-tree>
         </ul>
 
@@ -63,7 +65,8 @@
 
             data() {
                 return {
-                    treeId: '' + new Date() * 1 + Math.round(Math.random() * 1000)
+                    treeId: '' + new Date() * 1 + Math.round(Math.random() * 1000),
+                    isSelected: false
                 };
             },
 
@@ -112,20 +115,16 @@
                 idName: {
                     type: String
                 },
-                displayComponent: {
-                    type: Object
-                },
                 isRoot: {
                     type: Boolean,
                     default: true
                 },
                 isFold: {
                     type: Boolean,
-                    default: true
-                },
-                isSelected: {
-                    type: Boolean,
                     default: false
+                },
+                selectedId: {
+                    type: String
                 },
                 displayComponent: {
                     type: Object
@@ -184,8 +183,10 @@
                     });
                 }
 
+                this.isSelected = this.id == this.selectedId;
+
                 this.$on('reset-select', function (selectedId) {
-                    this.isSelected = this.id === selectedId;
+                    this.isSelected = this.id == selectedId;
                     return true;
                 });
             }
