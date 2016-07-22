@@ -22,86 +22,86 @@
 <script>
 
 export default {
-    data () {
-        return {
-            // note: changing this line won't causes changes
-            // with hot-reload because the reloaded component
-            // preserves its current state and we are modifying
-            // its initial state.
-            tree: {
-                v: 'value text',
-                c: [
-                    {
-                        v: 'level 2 - 1',
-                        c: [
-                            {
-                                v: 'level 3 - 1'
-                            },
-                            {
-                                v: 'level 3 - 2'
-                            }
-                        ]
-                    },
-                    {
-                        v: 'level 2 - 2'
-                    }
-                ]
-            },
-
-            displayArgs: {
-                valueToString: (x) => x
-            },
-
-            onSelect: function (value) {
-                console.log('select', value);
-            },
-
-            domTree: {
-              value: {
-                tagName: 'div',
-                attributes: { 'class': 'container', 'id': 'cid_1' },
+  data () {
+    return {
+      // note: changing this line won't causes changes
+      // with hot-reload because the reloaded component
+      // preserves its current state and we are modifying
+      // its initial state.
+      tree: {
+        v: 'value text',
+        c: [
+          {
+            v: 'level 2 - 1',
+            c: [
+              {
+                v: 'level 3 - 1'
               },
-              children: [
-                { 
-                  value: {
-                    tagName: 'header',
-                    attributes: { 'class': 'title' },
-                  },
-                  children: [
-                    {
-                      value: {
-                        tagName: 'a',
-                        attributes: { 'href': 'http://www.google.com', 'target': '_blank' }
-                      }
-                    }
-                  ]
-                },
+              {
+                v: 'level 3 - 2'
+              }
+            ]
+          },
+          {
+            v: 'level 2 - 2'
+          }
+        ]
+      },
 
-                { 
-                  value: {
-                    tagName: 'footer',
-                    attributes: { 'class': 'ending' },
-                  },
-                  children: [
-                    {
-                      value: {
-                        tagName: 'div'
-                      }
-                    }
-                  ]
-                },
-              ]
-            },
+      displayArgs: {
+        valueToString: (x) => x
+      },
 
-            domArgs: {
-              valueToDisplay: require('./value_display.vue')
+      onSelect: function (value) {
+        console.log('select', value);
+      },
+
+      domTree: {
+        value: {
+        tagName: 'div',
+        attributes: { 'class': 'container', 'id': 'cid_1' },
+        },
+        children: [
+        { 
+          value: {
+          tagName: 'header',
+          attributes: { 'class': 'title' },
+          },
+          children: [
+          {
+            value: {
+            tagName: 'a',
+            attributes: { 'href': 'http://www.google.com', 'target': '_blank' }
             }
-        }
-    },
+          }
+          ]
+        },
 
-    components: {
-        'y-tree': require('../src/y_tree.vue')
+        { 
+          value: {
+          tagName: 'footer',
+          attributes: { 'class': 'ending' },
+          },
+          children: [
+          {
+            value: {
+            tagName: 'div'
+            }
+          }
+          ]
+        },
+        ]
+      },
+
+      domArgs: {
+        valueToDisplay: require('./value_display.vue')
+      }
     }
+  },
+
+  components: {
+    'y-tree': require('../src/y_tree.vue')
+  }
 
 }
 </script>

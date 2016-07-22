@@ -2,45 +2,45 @@
 <style>
 
 .y-tree-display {
-    display: flex;
-    border-radius: 3px;
-    line-height: 23px;
+  display: flex;
+  border-radius: 3px;
+  line-height: 23px;
 }
 
 .y-tree-display:hover {
-    background: #ebf2fd;
+  background: #ebf2fd;
 }
 
 .y-tree-display.selected {
-    color: #fff;
-    background: #3a78e0;
+  color: #fff;
+  background: #3a78e0;
 }
 
 .y-tree-arrow {
-    margin: 6px 10px 0;
-    width: 0px;
-    height: 0;
-    border: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 8px solid #999;
-    transition: all 0.2s ease;
+  margin: 6px 10px 0;
+  width: 0px;
+  height: 0;
+  border: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #999;
+  transition: all 0.2s ease;
 } 
 
 .y-tree-display.selected .y-tree-arrow {
-    border-left-color: #fff;
+  border-left-color: #fff;
 }
 
 .y-tree-arrow.unfold {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .y-tree-arrow.hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .y-tree-content-wrapper {
-    flex: 1;
+  flex: 1;
 } 
 
 </style>
@@ -64,59 +64,59 @@
 </template>
 
 <script>
-    export default {
-        components: {
-            'value-component': function (resolve) {
-                resolve(this.valueToDisplay);
-            }
-        },
+  export default {
+    components: {
+      'value-component': function (resolve) {
+        resolve(this.valueToDisplay);
+      }
+    },
 
-        props: {
-            value: {
-                type: [Object, String],
-                required: true
-            },
-            toggleFold: {
-                type: Function,
-                required: true
-            }, 
-            select: {
-                type: Function,
-                required: true
-            }, 
-            isRoot: {
-                type: Boolean,
-                required: true
-            },
-            isFold: {
-                type: Boolean,
-                required: true
-            },
-            isSelected: {
-                type: Boolean,
-                required: true
-            },
-            hasChildren: {
-                type: Boolean,
-                required: true
-            },
-            args: {
-                type: Object
-            }
-        },
+    props: {
+      value: {
+        type: [Object, String],
+        required: true
+      },
+      toggleFold: {
+        type: Function,
+        required: true
+      }, 
+      select: {
+        type: Function,
+        required: true
+      }, 
+      isRoot: {
+        type: Boolean,
+        required: true
+      },
+      isFold: {
+        type: Boolean,
+        required: true
+      },
+      isSelected: {
+        type: Boolean,
+        required: true
+      },
+      hasChildren: {
+        type: Boolean,
+        required: true
+      },
+      args: {
+        type: Object
+      }
+    },
 
-        computed: {
-            text: function () {
-                return this.valueToString(this.value);
-            },
+    computed: {
+      text: function () {
+        return this.valueToString(this.value);
+      },
 
-            valueToString: function () {
-                return (this.args || {}).valueToString || ((x) => JSON.stringify(x));
-            },
+      valueToString: function () {
+        return (this.args || {}).valueToString || ((x) => JSON.stringify(x));
+      },
 
-            valueToDisplay: function () {
-                return (this.args || {}).valueToDisplay;
-            }
-        }
+      valueToDisplay: function () {
+        return (this.args || {}).valueToDisplay;
+      }
     }
+  }
 </script>

@@ -1,7 +1,7 @@
 <style>
 
 .y-tree ul {
-    padding-left: 20px; 
+  padding-left: 20px; 
 }
 
 </style>
@@ -25,60 +25,60 @@
 
 
 <script>
-    export default {
-        data() {
-            return {
-                'treeDisplay': require('./y_tree_display.vue')
-            }
-        },
+  export default {
+    data() {
+      return {
+        'treeDisplay': require('./y_tree_display.vue')
+      }
+    },
 
-        components: {
-            'x-tree': require('./x_tree.vue'),
-        },
+    components: {
+      'x-tree': require('./x_tree.vue'),
+    },
 
-        props: {
-            tree: {
-                type: Object,
-                default: () => ({
-                })
-            },
-            childrenName: {
-                type: String,
-                default: 'children'
-            },
-            valueName: {
-                type: String,
-                default: 'value'
-            },
-            idName: {
-                type: String
-            },
-            isRoot: {
-                type: Boolean,
-                default: true
-            },
-            isFold: {
-                type: Boolean,
-                default: false
-            },
-            selectedId: {
-                type: String
-            },
-            displayArgs: {
-                type: Object
-            },
-            treeStyle: {
-                type: Object,
-                default: () => ({
-                    rootDiv: {},
-                    rootLi: {},
-                    valueDiv: {},
-                    ul: {}
-                })
-            },
-            extraClass: {
-                type: String
-            }
-        }
+    props: {
+      tree: {
+        type: Object,
+        default: () => ({
+        })
+      },
+      childrenName: {
+        type: String,
+        default: 'children'
+      },
+      valueName: {
+        type: String,
+        default: 'value'
+      },
+      idName: {
+        type: String
+      },
+      isRoot: {
+        type: Boolean,
+        default: true
+      },
+      isFold: {
+        type: Boolean,
+        default: false
+      },
+      selectedId: {
+        type: String
+      },
+      displayArgs: {
+        type: Object
+      },
+      treeStyle: {
+        type: Object,
+        default: () => ({
+          rootDiv: {},
+          rootLi: {},
+          valueDiv: {},
+          ul: {}
+        })
+      },
+      extraClass: {
+        type: String
+      }
     }
+  }
 </script>
