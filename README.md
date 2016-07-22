@@ -7,10 +7,12 @@
 - [simple demo](http://jsfiddle.net/kdepp/gdmzcf4t/)
   - ![](https://cloud.githubusercontent.com/assets/461599/17044723/3c4fec00-4ff5-11e6-81ae-6fa65d5189b4.png)
 
+- [dom tree demo](http://jsfiddle.net/kdepp/gdmzcf4t/)
+  - ![](https://cloud.githubusercontent.com/assets/461599/17045844/e037c1bc-4fff-11e6-83d0-503c05732841.png)
 
 ## Install
 
-`vue-y-tree` is a UMD module, it means:
+`vue-y-tree` is a `UMD` module, it means:
 - you can use it as an npm package
 - or you can load it directly in browser, and access it with the global variable `VueTree`
 
@@ -47,7 +49,7 @@ Use `yTree` if you just want to display normal text in each tree node, while it 
 | childrenName | String | false | 'children' | the children key in the tree data
 | valueName | String | false | 'value' | the children key in the tree data
 | idName | String | false |   | the key to determine whether one node is selected, could be omitted. If omitted, all nodes will be assigned a unique id. |
-| isFold | Boolean | false | true | whether a tree is folded in the first place |
+| isFold | Boolean | false | false | whether a tree is folded in the first place |
 | isSelected | Boolean | false | false | where a tree is selected in the first place |
 | displayComponent | Object | false |   | the Component to display tree value |
 | displayArgs | Object | false |   | extra args to be passed to displayComponent |
