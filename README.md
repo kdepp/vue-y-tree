@@ -2,7 +2,7 @@
 
 > Yet another tree component for vue
 
-# Demo
+## Demo
 
 - #### [simple demo](http://jsfiddle.net/kdepp/gdmzcf4t/)
   ![](https://cloud.githubusercontent.com/assets/461599/17044723/3c4fec00-4ff5-11e6-81ae-6fa65d5189b4.png)
@@ -21,7 +21,7 @@ npm install vue-y-tree
 
 ```
 
-# Usage
+## Usage
 
 ``` html
 <body style="background: #fff">
@@ -75,7 +75,7 @@ new Vue({
 })
 ```
 
-# Tips
+## Tips
 
 Two vue components are exported in `vue-y-tree`:
 
