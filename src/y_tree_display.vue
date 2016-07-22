@@ -39,7 +39,7 @@
     visibility: hidden;
 }
 
-.y-tree-content {
+.y-tree-content-wrapper {
     flex: 1;
 } 
 
@@ -48,12 +48,29 @@
 <template>
     <div class="y-tree-display" :class="{selected: isSelected}">
         <div class="y-tree-arrow" :class="{ unfold: !isFold, hidden: !hasChildren }"  v-on:click="toggleFold"></div>
-        <div class="y-tree-content" v-on:click="select">{{ text }}</div> 
+        <div class="y-tree-content-wrapper">
+            <component v-if="valueToDisplay"
+                        is="value-component"
+                        :value="value"
+                        :is-root="isRoot"
+                        :is-fold="isFold"
+                        :is-selected="isSelected"
+                        :has-children="hasChildren"
+                        :select="select"
+            ></component> 
+            <div v-else class="y-tree-content" v-on:click="select">{{ text }}</div> 
+        </div>
     </div>
 </template>
 
 <script>
     export default {
+        components: {
+            'value-component': function (resolve) {
+                resolve(this.valueToDisplay);
+            }
+        },
+
         props: {
             value: {
                 type: [Object, String],
@@ -95,6 +112,10 @@
 
             valueToString: function () {
                 return (this.args || {}).valueToString || ((x) => JSON.stringify(x));
+            },
+
+            valueToDisplay: function () {
+                return (this.args || {}).valueToDisplay;
             }
         }
     }
