@@ -89,7 +89,7 @@ Two vue components are exported in `vue-y-tree`:
 Use `yTree` if you just want to display normal text in each tree node, while it is recommended to use `xTree` if you have a complex data structure and want to customize the display.
 
 
-# Props
+## Props
 
 ### xTree
 
